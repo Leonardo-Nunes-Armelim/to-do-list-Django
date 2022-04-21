@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #main-box {
+        border: solid black 3px;
+        border-radius: 20px;
+        padding: 25px;
+        width: 500px;
+        }
+        #Task{
+            width: 300px;
+        }
+    </style>
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="main-box">
+        <h1>Creat Your To Do List Here!</h1>
+        <input type="text" id="Task" placeholder="Item Description">
+        <input type="date" id="Deadline">
+        <button onclick="create_to_do_item()">Create</button>
+        <div id="insert"></div>
+    </div>
+    <script>
+        var task_number = 0
+        function create_to_do_item(){
+            task_number = task_number + 1;
+            var task_text = document.getElementById("Task").value;
+            var deadline = document.getElementById("Deadline").value;
+            document.getElementById("insert").innerHTML += "<span id=\"task_item" + task_number + "\">Task" + task_number + ":" + task_text + " Deadline:" + deadline + "<button onclick=\"delete_to_do_item(" + task_number + ")\">Delete</button><br></span>";
+        }
+        function delete_to_do_item(item_number){
+            document.getElementById("task_item" + item_number).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
